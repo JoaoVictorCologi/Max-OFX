@@ -29,7 +29,7 @@ Acesse **http://127.0.0.1:8501**. A instância PostgreSQL portátil usa `127.0.0
 
 Para uma demonstração, clique em **Usar extrato de exemplo** e em **Classificar e salvar no PostgreSQL**. Você também pode selecionar seu próprio arquivo pelo upload. Em **Movimentações salvas**, confira o que foi efetivamente persistido.
 
-O banco já pode conter os 15 registros do exemplo usados na validação. Reimportar esse exemplo deve mostrar 0 inseridas e 15 já existentes.
+O exemplo público contém 3 movimentações inteiramente fictícias. Após a primeira importação, repeti-la deve mostrar 0 inseridas e 3 já existentes. O arquivo do professor deve ser selecionado pelo upload e não é publicado neste repositório.
 
 ## Instalação em outro Windows x64
 
@@ -55,16 +55,16 @@ Se você já usa PostgreSQL, configure a variável `DATABASE_URL` no terminal an
 3. A senha está no campo `password` do arquivo local `.local/database.json`. Não compartilhe esse arquivo.
 4. Execute `consultas_validacao.sql` e confira os registros, totais e ausência de duplicações.
 
-O arquivo de exemplo deve produzir:
+Os valores abaixo se referem somente ao exemplo fictício incluído no repositório:
 
 | Indicador | Valor |
 |---|---:|
-| Movimentações | 15 |
-| Entradas | R$ 17.900,00 |
-| Saídas (magnitude) | R$ 6.059,70 |
-| Saldo das movimentações | R$ 11.840,30 |
-| Saldo informado no OFX | R$ 12.030,20 |
-| Diferença | R$ 189,90 |
+| Movimentações | 3 |
+| Entradas | R$ 1.000,00 |
+| Saídas (magnitude) | R$ 250,00 |
+| Saldo das movimentações | R$ 750,00 |
+| Saldo informado no OFX | R$ 800,00 |
+| Diferença | R$ 50,00 |
 
 O saldo informado no OFX pode incluir saldo anterior. O exemplo não informa saldo inicial, portanto a aplicação mostra a diferença sem alterar valores para forçar conciliação.
 
@@ -98,7 +98,7 @@ preparar_banco.py         Preparação do banco portátil ou conexão externa
 iniciar.bat / iniciar.ps1 Inicialização
 parar_banco.ps1           Encerramento do PostgreSQL portátil
 consultas_validacao.sql   Consultas para apresentação no DBeaver
-exemplos/extrato.ofx      Arquivo fornecido para a atividade
+exemplos/extrato.ofx      Exemplo inteiramente fictício
 tests/                   Testes unitários, integração e interface
 ```
 
@@ -117,7 +117,7 @@ Com o PostgreSQL em execução:
 .\.venv\Scripts\python.exe main.py exemplos\extrato.ofx
 ```
 
-Os seis testes verificam os totais reais do exemplo, normalização e classificação, arquivos inválidos, FITID ausente, persistência, duplicação, rollback e as telas de prévia, importação, histórico, filtros e regras. Os testes de integração e interface criam e removem apenas seus esquemas temporários, preservando as movimentações de demonstração.
+Os seis testes verificam os totais do exemplo fictício, normalização e classificação, arquivos inválidos, FITID ausente, persistência, duplicação, rollback e as telas de prévia, importação, histórico, filtros e regras. Os testes de integração e interface criam e removem apenas seus esquemas temporários, preservando as movimentações de demonstração.
 
 ## Encerrar
 
@@ -131,6 +131,6 @@ O banco preserva os dados para a próxima execução.
 
 ## Entrega no GitHub
 
-Crie um repositório no GitHub e envie os arquivos de código, `README.md`, `requirements.txt`, SQL, testes, scripts e a pasta `exemplos`. Não envie ambientes virtuais, arquivos locais de senha, binários ou a pasta de dados do banco. A entrega solicitada no enunciado é o link desse repositório.
+Publique os arquivos de código, `README.md`, `requirements.txt`, SQL, testes, scripts e a pasta `exemplos`. Não envie ambientes virtuais, arquivos locais de senha, binários ou a pasta de dados do banco. A entrega solicitada no enunciado é o link desse repositório.
 
 Sugestão para apresentação: importar o exemplo, mostrar as categorias e totais, repetir a importação para demonstrar que não duplica e executar as consultas no DBeaver.
